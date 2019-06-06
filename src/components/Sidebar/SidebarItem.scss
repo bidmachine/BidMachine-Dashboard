@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.sidebar-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #e1e1e1;
+  width: 77px;
+  height: 77px;
+  border-bottom: 1px solid #474646;
+  font-size: 12px;
+
+  &:not(.active) {
+    cursor: pointer;
+  }
+
+  &.active,
+  &:hover {
+    color: $primaryColor;
+    background-color: #dce3e7;
+
+    &.disabled {
+      color: #e1e1e1;
+      background-color: inherit;
+      cursor: not-allowed;
+    }
+  }
+
+  i {
+    font-size: 30px;
+  }
+
+  span {
+    margin-top: 6px;
+    text-align: center;
+  }
+}

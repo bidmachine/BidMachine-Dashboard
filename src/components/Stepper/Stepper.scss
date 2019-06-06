@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+.stepper {
+  .stepper-steps {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(#000, 0.2);
+
+    .stepper-step {
+      padding: 16px;
+      text-align: center;
+      font-size: 18px;
+      border-bottom: 4px solid transparent;
+
+      &.current {
+        border-color: $primaryColor;
+      }
+
+      &:not(.active) {
+        color: #888;
+      }
+
+      &.active:not(.current) {
+        cursor: pointer;
+
+        &:hover {
+          border-color: $primaryColor;
+        }
+      }
+    }
+
+    .stepper-delimeter {
+      text-align: center;
+      padding: 16px;
+      font-size: 22px;
+    }
+  }
+
+  .stepper-content {
+    margin-top: 16px;
+  }
+}

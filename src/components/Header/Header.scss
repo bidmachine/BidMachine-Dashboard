@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+$headerSize: 77px;
+.header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  height: $headerSize;
+  background-color: #E6EBF2;
+  color: #000;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 0;
+  }
+
+  .logo {
+    width: 76px;
+    min-width: 76px;
+    height: 100%;
+    border-right: 1px solid rgba(255, 255, 255, 0.36);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+
+    img {
+      width: 35px;
+    }
+  }
+}

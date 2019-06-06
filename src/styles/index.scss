@@ -1,0 +1,137 @@
+@import './theme.scss';
+@import './fields.scss';
+@import '~react-tippy/dist/tippy.css';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 14px;
+  min-width: 727px;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+input[disabled] {
+  background-color: lightgray;
+}
+
+.DateRangePicker__picker {
+  z-index: 1000;
+}
+
+@import '../../node_modules/react-table/react-table.css';
+
+.ReactTable .rt-thead .rt-th {
+  line-height: 42px;
+  font-weight: bold;
+  height: 50px;
+  background-color: #dce3e7;
+  color: #000000;
+}
+
+.ReactTable .rt-thead .rt-th.-sort-asc, .ReactTable .rt-thead .rt-td.-sort-asc {
+  box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 1);
+}
+
+.ReactTable .rt-thead .rt-th.-sort-desc, .ReactTable .rt-thead .rt-td.-sort-desc {
+  box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 1);
+}
+
+.ReactTable {
+  .rt-table {
+    overflow: inherit;
+  }
+
+  .rt-thead {
+    position: sticky;
+    top: 0;
+  }
+
+  .-pagination {
+    background-color: #dce3e7;
+    color: #000000;
+
+    .-btn {
+      color: #000000;
+    }
+
+    .-pageJump, .-pageSizeOptions {
+      color: #000000;
+    }
+  }
+
+  .rt-tbody .rt-td {
+    border-right: none;
+  }
+}
+
+.rt-thead, -header {
+  z-index: 9;
+
+  .rt-th {
+    outline: none;
+
+  }
+}
+
+
+.copy-element {
+  button {
+    position: relative;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px 32px 8px 8px;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background-color: #fff;
+      border: 1px solid $primaryColor;
+
+      .fa {
+        color: $primaryColor;
+      }
+    }
+
+    &:active {
+      background-color: #f0f0f0;
+    }
+
+    .fa {
+      display: block;
+      color: transparent;
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 11px;
+      height: 11px;
+    }
+  }
+}
+
+.ReactModal__Overlay.Creative-Preview-modal {
+  text-align: center;
+}
+
+.chart-tooltip-content {
+  background-color: #fff;
+  padding: 16px;
+  border: 1px solid gray;
+}
+
+.recharts-tooltip-wrapper {
+  z-index: 100;
+}
+
+.error {
+  color: $primaryColor;
+}

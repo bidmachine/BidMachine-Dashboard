@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.tabs {
+  .tabs-row {
+    display: flex;
+
+    .tab {
+      &:not(.selected) {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .tabs-content {
+  }
+}

@@ -1,0 +1,399 @@
+@import './variables.scss';
+// pe 7 stroke
+@import '../../assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css'; // font awesome
+$fa-font-path: '../../node_modules/font-awesome/fonts';
+@import '../../node_modules/font-awesome/scss/font-awesome.scss'; // ionicons
+$ionicons-font-path: '../../node_modules/ionicons/dist/fonts';
+@import '../../node_modules/ionicons/dist/scss/ionicons.scss'; // flag icons
+$flag-icon-css-path: '../../node_modules/flag-icon-css/flags';
+@import '../../node_modules/flag-icon-css/sass/_flag-icon.scss'; // react-select
+$selectBgColor: lighten($primaryColor, 5%);
+$selectColor: #fff;
+$select-option-focused-bg: $selectBgColor;
+$select-option-focused-color: $selectColor;
+$select-option-selected-bg: $selectBgColor;
+$select-option-selected-color: $selectColor;
+$select-item-bg: $selectBgColor;
+$select-item-color: $selectColor;
+@import '../../node_modules/react-select/scss/select.scss'; // react-activity
+@import '../../node_modules/react-select/scss/default.scss'; // react-activity
+@import '../../node_modules/react-activity/src/Dots/Dots.scss';
+// date picker
+$react-dates-color-primary: $primaryColor;
+$react-dates-color-primary-dark: darken($primaryColor, 20%);
+$react-dates-color-primary-shade-1: lighten($primaryColor, 5%);
+$react-dates-color-primary-shade-2: lighten($primaryColor, 10%);
+$react-dates-color-primary-shade-3: lighten($primaryColor, 15%);
+$react-dates-color-primary-shade-4: lighten($primaryColor, 20%);
+$react-dates-color-secondary: darken($primaryColor, 10%);
+$react-dates-color-white: #fff;
+$react-dates-color-gray: #565a5c;
+$react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%);
+$react-dates-color-gray-light: lighten($react-dates-color-gray, 17.8%);
+$react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%);
+$react-dates-color-highlighted: #ffe8bc;
+$react-dates-color-border: #dbdbdb;
+$react-dates-color-border-light: #dce0e0;
+$react-dates-color-border-medium: #c4c4c4;
+$react-dates-color-placeholder-text: #757575;
+$react-dates-color-text: #484848;
+$react-dates-color-text-focus: darken($primaryColor, 35%);
+$react-dates-color-focus: lighten($primaryColor, 25%);
+@import '../../node_modules/react-dates/css/variables.scss';
+@import '../../node_modules/react-dates/css/styles.scss';
+.DateRangePickerInput {
+  border-radius: 4px;
+  height: 34px;
+}
+
+.Select--multi .Select-value-label {
+  padding: 4px 5px;
+}
+
+.DateInput {
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 4px;
+  padding: 4px;
+  width: 90px;
+}
+
+.DateRangePickerInput__arrow svg {
+  width: 20px;
+  height: 19px;
+}
+
+.DateInput__input {
+  padding: 0;
+  cursor: pointer;
+}
+
+.DateInput__display-text {
+  text-align: center;
+}
+
+.CalendarDay--today {
+  font-weight: 700;
+  border-bottom: 2px solid $primaryColor;
+}
+
+.DateRangePickerInput__calendar-icon {
+  padding: 6px 6px 9px 11px;
+  margin: 0;
+}
+
+// fonts
+@import './fonts.scss';
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #3A4354;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: $primaryColor;
+}
+
+body.roboto {
+  font-family: 'Roboto', sans-serif;
+
+  .header {
+    h1 {
+      padding-top: 0;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  .button {
+    padding: 8px 16px 8px;
+
+    &.small {
+      padding: 5px 8px 5px;
+    }
+  }
+
+  .form-field {
+    label {
+      padding-top: 0;
+    }
+
+    & > input {
+      padding: 0 16px 0;
+    }
+  }
+
+  .data-table {
+    th,
+    td {
+      padding: 10px 8px;
+    }
+  }
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 28px;
+}
+
+.breadcrumbs {
+  padding: 32px;
+}
+
+.button.control {
+  width: 70px;
+  text-align: left;
+}
+
+.toolbar {
+  display: flex;
+  padding: 16px 0;
+  justify-content: space-between;
+
+  .title {
+    font-size: 28px;
+  }
+
+  .toolbar-block {
+    display: flex;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .toolbar-item {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.flex-space {
+  flex: 1;
+}
+
+.space-w10 {
+  display: inline-block;
+  width: 10px;
+}
+
+
+.flex-row {
+  display: flex;
+  flex-flow: row;
+}
+
+.model-form {
+  padding: 32px 0;
+  margin-right: 220px;
+  max-width: 580px;
+
+  .form-field {
+    margin-bottom: 16px;
+
+    label {
+      width: 120px;
+      text-align: right;
+
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+
+    & > input {
+      min-width: 320px;
+      width: auto;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      padding: 4px 16px;
+    }
+
+    .Select {
+      min-width: 320px;
+      width: auto;
+    }
+  }
+
+  .form-controls {
+    display: flex;
+    flex-flow: row;
+
+    .button {
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+
+.button-bar {
+  width: 100%;
+  display: flex;
+  padding-bottom: 16px;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    display: block;
+
+    &:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+}
+
+$modalOverlayTransition: 0.3s;
+$modalContentTransition: 0.3s;
+.ReactModalPortal {
+  .ReactModal__Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(#000, 0.25);
+    transition: background-color ease-in-out $modalOverlayTransition;
+    z-index: 100;
+
+    &.ReactModal__Overlay--after-open {
+      background-color: rgba(#000, 0.7);
+    }
+
+    &.ReactModal__Overlay--before-close {
+      background-color: rgba(#000, 0);
+    }
+
+    .ReactModal__Content {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      right: 40px;
+      bottom: 40px;
+      border: 1px solid rgb(204, 204, 204);
+      background: rgb(255, 255, 255);
+      overflow: auto;
+      border-radius: 4px;
+      outline: none;
+      padding: 20px;
+      transform: translate3d(0, 100vh, 0);
+      transition: transform ease-in-out $modalContentTransition;
+      box-shadow: 0 1px 4px rgba(#000, 0.4);
+
+      &.ReactModal__Content--after-open {
+        transform: translate3d(0, 0, 0);
+      }
+
+      &.ReactModal__Content--before-close {
+        transform: translate3d(0, 100vh, 0);
+      }
+
+      .model-form {
+        margin-right: 0;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.ReactTabs {
+  .ReactTabs__TabList {
+    border-color: #ddd;
+
+    .ReactTabs__Tab {
+      padding: 10px 16px 8px;
+
+      &.ReactTabs__Tab--selected {
+        border-color: #ddd;
+        color: $primaryColor;
+      }
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .model-form {
+    padding: 32px 0;
+    margin-right: 0;
+    max-width: 100%;
+
+    .form-field {
+      label {
+        width: 100%;
+        text-align: left;
+        padding-left: 0;
+        margin-right: 0;
+      }
+
+      & > input {
+        width: 100%;
+      }
+
+      .error {
+        padding: 4px 16px;
+      }
+
+      .Select {
+        width: 100%;
+      }
+
+      .add {
+        margin-left: 90%;
+      }
+    }
+
+    .form-controls {
+      width: 100%;
+
+      .button {
+        flex: 1;
+      }
+    }
+
+    .ext {
+      width: 100%;
+      flex-flow: row;
+      margin-bottom: 3px;
+
+      .line-break {
+        width: 100%;
+      }
+
+      input {
+        min-width: 250px;
+      }
+    }
+  }
+}
+
+.add {
+  margin-left: 648px;
+}
+
+.graphic-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.graphic-content {
+  position: relative;
+  display: inline-block;
+}

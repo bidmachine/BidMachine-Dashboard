@@ -1,0 +1,21 @@
+.ReactModal__Overlay.Confirm-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ReactModal__Content {
+    position: relative;
+
+    .Confirm-modal__Actions {
+      display: flex;
+
+      .button {
+        flex: 1;
+
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}

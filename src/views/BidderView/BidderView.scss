@@ -1,0 +1,25 @@
+.bidder-view {
+  .ReactTabs {
+    margin-bottom: 32px;
+  }
+}
+
+.choose-adprofile-templates {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+
+  li {
+    margin: 5px 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+

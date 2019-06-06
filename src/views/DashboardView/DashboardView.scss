@@ -1,0 +1,32 @@
+@import '../../styles/variables.scss';
+
+.dashboard-view {
+  .dashboard-filters {
+    min-width: 320px;
+    padding: 40px 16px 0;
+  }
+}
+
+.date-picker-info {
+  padding: 4px;
+  border-top: 1px solid #f0f0f0;
+
+  .button {
+    border-radius: 2px;
+    border-color: #f0f0f0;
+
+    &.primary {
+      color: #fff;
+      background-color: $primaryColor;
+      cursor: default;
+    }
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
+  }
+}
+
+.DateRangePickerInput__calendar-icon:focus {
+  outline: none;
+}

@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+
+.bidder-endpoint-copy {
+  button {
+    position: relative;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px 32px 8px 8px;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background-color: #fff;
+      border: 1px solid $primaryColor;
+
+      .fa {
+        color: $primaryColor;
+      }
+    }
+
+    &:active {
+      background-color: #f0f0f0;
+    }
+
+    .fa {
+      display: block;
+      color: transparent;
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 11px;
+      height: 11px;
+    }
+  }
+}
