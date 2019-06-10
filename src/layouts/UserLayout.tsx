@@ -18,7 +18,7 @@ class UserLayout extends React.Component<{
             <div className='app'>
                 <Confirm/>
                 <Header>
-                    <div className='logo'><img src={LOGO}/></div>
+                    <div className='logo'><img src={LOGO} alt="BidMachine"/></div>
                     <h1 className='step-first'>BidMachine</h1>
                     <div className='flex-space'/>
                 </Header>
@@ -57,7 +57,7 @@ class UserLayout extends React.Component<{
                     </div>
                 </main>
             </div>
-        )
+        );
     }
 
     private isActive(route: string) {
@@ -66,4 +66,4 @@ class UserLayout extends React.Component<{
     }
 }
 
-export default connect(() => ({}), (dispatch: Dispatch<any>) => ({}))(UserLayout)
+export default connect(() => ({}), (dispatch: Dispatch<any>) => ({}))(UserLayout);

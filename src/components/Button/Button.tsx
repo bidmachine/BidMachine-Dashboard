@@ -1,11 +1,11 @@
 import './Button.scss';
 import * as React from 'react';
-import {ClassAttributes, Component, HTMLAttributes} from 'react';
+import {ButtonHTMLAttributes, ClassAttributes, Component} from 'react';
 import {Link} from "react-router";
 
 type ButtonIcon = string | JSX.Element;
 
-interface ButtonProps extends ClassAttributes<Button>, HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ClassAttributes<Button>, ButtonHTMLAttributes<HTMLButtonElement> {
     href?: string;
     target?: string;
     iconLeft?: ButtonIcon;
@@ -14,15 +14,15 @@ interface ButtonProps extends ClassAttributes<Button>, HTMLAttributes<HTMLButton
 
 function renderIcon(icon: ButtonIcon, key) {
     switch (typeof icon) {
-        case 'object': {
-            return icon;
-        }
-        case 'string': {
-            return <i key={key} className={icon as string}/>;
-        }
-        default: {
-            return null;
-        }
+    case 'object': {
+        return icon;
+    }
+    case 'string': {
+        return <i key={key} className={icon as string}/>;
+    }
+    default: {
+        return null;
+    }
     }
 }
 

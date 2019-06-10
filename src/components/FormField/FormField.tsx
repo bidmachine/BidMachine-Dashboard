@@ -13,6 +13,7 @@ interface FormFieldProps extends ClassAttributes<FormField>, HTMLAttributes<HTML
     iconLeft?: JSX.Element;
     iconRight?: JSX.Element;
     borderless?: boolean;
+    disabled?: boolean;
     options?: any[];
     onChange?: (value: any) => void;
 }
@@ -42,21 +43,21 @@ export class FormField extends Component<FormFieldProps, {}> {
         if (onChange) {
             onChange(event.target.value);
         }
-    };
+    }
 
     private toggleCheckbox = () => {
         const {onChange, value} = this.props;
         if (onChange) {
             onChange(!value);
         }
-    };
+    }
 
     private onCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const {onChange} = this.props;
         if (onChange) {
             onChange(event.target.checked);
         }
-    };
+    }
 
     private renderLabel() {
         const {label, labelPosition} = this.props;

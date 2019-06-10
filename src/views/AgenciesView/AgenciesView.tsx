@@ -38,7 +38,7 @@ export class AgenciesViewComponent extends React.Component<AgenciesViewStateProp
 }> {
     state = {
         createModal: false
-    }
+    };
 
     private agencyColumns: Column[] = [{
         value: 'id',
@@ -95,7 +95,7 @@ export class AgenciesViewComponent extends React.Component<AgenciesViewStateProp
                 <Button className='primary' iconLeft='fa fa-plus-circle' onClick={this.openCreateModal}>Create
                     agency</Button>
             </div>
-        )
+        );
     }
 
     render() {
@@ -124,9 +124,9 @@ export class AgenciesViewComponent extends React.Component<AgenciesViewStateProp
     private openCreateModal = () => this.setState({createModal: true} as any);
 
     private closeCreateModal = () => {
-        this.props.requestAgencies()
-        this.setState({createModal: false} as any)
-    };
+        this.props.requestAgencies();
+        this.setState({createModal: false} as any);
+    }
 }
 
 export const AgenciesView = connect<AgenciesViewStateProps, AgenciesViewDispatchProps, AgenciesViewOwnProps>(

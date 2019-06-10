@@ -178,16 +178,16 @@ export class DetailedAdSpacesViewComponent extends Component<DetailedAdSpacesVie
     openUpdateModal = (adSpaceId: number) => this.setState({
         editModal: true,
         adSpaceId
-    } as any);
+    } as any)
 
     closeUpdateModal = () => this.setState({
         editModal: false,
         adSpaceId: null
-    } as any);
+    } as any)
 
     openDeleteModal = (adSpaceId) => {
         this.props.deleteAdSpace(adSpaceId);
-    };
+    }
 
     componentDidMount() {
         this.props.requestAdSpaces(this.props.sellerId);
@@ -253,8 +253,8 @@ export class DetailedAdSpacesViewComponent extends Component<DetailedAdSpacesVie
         let countExt = 1;
         adSpace.ad['ext'] = {};
         while (flag) {
-            let key = adSpace[`name${countExt}`];
-            let value = adSpace[`value${countExt}`];
+            const key = adSpace[`name${countExt}`];
+            const value = adSpace[`value${countExt}`];
             if (key && value) {
                 adSpace.ad.ext[key] = value;
                 countExt++;
@@ -262,18 +262,18 @@ export class DetailedAdSpacesViewComponent extends Component<DetailedAdSpacesVie
                 flag = false;
             }
         }
-        ;
+
         await this.props.createAdSpace(adSpace);
         this.closeCreateModal();
-    };
+    }
 
     private editAdSpace = async (adSpace) => {
         let flag = true;
         let countExt = 1;
         adSpace.ad['ext'] = {};
-        let names = new Map();
-        let values = new Map();
-        for (let key in adSpace) {
+        const names = new Map();
+        const values = new Map();
+        for (const key of Object.keys(adSpace)) {
             if (key.indexOf('name') > -1 && adSpace[key] !== '') {
                 names.set(key.replace('name', ''), adSpace[key]);
             }
@@ -283,10 +283,10 @@ export class DetailedAdSpacesViewComponent extends Component<DetailedAdSpacesVie
         }
         Array.from(names.keys()).map(val => {
             adSpace['ad']['ext'][names.get(val)] = values.get(val);
-        })
+        });
         while (flag) {
-            let key = adSpace[`name${countExt}`];
-            let value = adSpace[`value${countExt}`];
+            const key = adSpace[`name${countExt}`];
+            const value = adSpace[`value${countExt}`];
             if (key && value) {
                 adSpace.ad.ext[key] = value;
                 countExt++;
@@ -294,10 +294,10 @@ export class DetailedAdSpacesViewComponent extends Component<DetailedAdSpacesVie
                 flag = false;
             }
         }
-        ;
+
         await this.props.updateAdSpace(adSpace.id, adSpace);
         this.closeUpdateModal();
-    };
+    }
 
     private renderEditForm() {
         const {adSpaceId} = this.state;

@@ -50,8 +50,8 @@ export interface DataTableProps extends TableProps, ClassAttributes<DataTable> {
 }
 
 export interface DataTableState {
-    visibleColumns: string[],
-    visibleColumnsEdit: boolean
+    visibleColumns: string[];
+    visibleColumnsEdit: boolean;
 }
 
 function nextSort(direction: SortDirection): SortDirection {
@@ -92,50 +92,50 @@ export class DataTable extends Component<DataTableProps, DataTableState> {
         this.state = {
             visibleColumnsEdit: false,
             visibleColumns: this.restoreSelectedColumns(props.columns.map(column => column.label))
-        }
+        };
     }
 
     keySelectedColumns() {
-        let {customizeStore} = this.props;
-        return customizeStore ? `${customizeStore}.visibleColumns` : null
+        const {customizeStore} = this.props;
+        return customizeStore ? `${customizeStore}.visibleColumns` : null;
     }
 
     saveSelectedColumns() {
-        let {visibleColumns} = this.state;
-        let key = this.keySelectedColumns();
-        if (key) localStorage.setItem(this.keySelectedColumns(), JSON.stringify(visibleColumns))
+        const {visibleColumns} = this.state;
+        const key = this.keySelectedColumns();
+        if (key) { localStorage.setItem(this.keySelectedColumns(), JSON.stringify(visibleColumns)); }
     }
 
     restoreSelectedColumns(columns) {
-        let key = this.keySelectedColumns();
-        if (!key) return columns;
-        let value = localStorage.getItem(key);
-        return value ? JSON.parse(value) : columns
+        const key = this.keySelectedColumns();
+        if (!key) { return columns; }
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : columns;
     }
 
     componentDidUpdate(prevProps: DataTableProps, prevState: DataTableState) {
-        this.saveSelectedColumns()
+        this.saveSelectedColumns();
     }
 
     renderColumnEditor() {
         const {columns} = this.props;
-        let {visibleColumns} = this.state;
+        const {visibleColumns} = this.state;
         return (
             <tr>
                 {columns.filter((column) => !column.hide).map((column, i) => {
-                    let index = visibleColumns.indexOf(column.label);
+                    const index = visibleColumns.indexOf(column.label);
                     return (
                         <th key={column.label} style={{textAlign: 'center'}}>
                             <i className={`fa fa-${index >= 0 ? 'check-' : ''}square`} style={{cursor: 'pointer'}}
                                onClick={() => {
                                    index >= 0 ? visibleColumns.splice(index, 1) : visibleColumns.push(column.label);
-                                   this.setState({visibleColumns: visibleColumns} as any);
+                                   this.setState({visibleColumns} as any);
                                }}/>
                         </th>
-                    )
+                    );
                 })}
             </tr>
-        )
+        );
 
     }
 
@@ -164,12 +164,12 @@ export class DataTable extends Component<DataTableProps, DataTableState> {
                         columns.filter(this.columnFilter).map((column, i) => {
                             return <th
                                 style={column.label.toLowerCase() !== 'countries' ? column.style : {}}
-                                width={column.width}
+                                // width={column.width}
                                 key={i}
                                 className={column.className + (onSort ? ' sortable' : '')}
                                 onClick={() => !column.nosort && onSort && onSort(column.value, nextSort(column.value === sortColumn ? sortDirection : null))}>
                                 {column.label}{!column.nosort && onSort && this.renderColumnSort(column)}
-                            </th>
+                            </th>;
                         })
                     }
                 </tr>
@@ -214,7 +214,7 @@ export class DataTable extends Component<DataTableProps, DataTableState> {
             link.click();
             document.body.removeChild(link);
         }
-    };
+    }
 
     private renderData() {
         const {data, columns} = this.props;
@@ -242,8 +242,8 @@ export class DataTable extends Component<DataTableProps, DataTableState> {
     }
 
     private columnFilter = (column) => {
-        let {visibleColumns, visibleColumnsEdit} = this.state;
-        return !column.hide && (visibleColumnsEdit || visibleColumns.indexOf(column.label) >= 0)
+        const {visibleColumns, visibleColumnsEdit} = this.state;
+        return !column.hide && (visibleColumnsEdit || visibleColumns.indexOf(column.label) >= 0);
     }
 
     private renderTotal() {

@@ -96,7 +96,7 @@ export function reducer(state: State = initialState, action: Actions) {
             return {
                 ...state,
                 errorMessage: (action as any).errorMessage
-            }
+            };
         }
         default: {
             return state;
@@ -152,7 +152,7 @@ export const requestBidderAction = (id: number) => (dispatch: Dispatch<any>) => 
 export const createBidderAction = (bidder: Bidder) => (dispatch: Dispatch<any>) => {
     dispatch({
         type: CREATE_BIDDER,
-        bidder: bidder
+        bidder
     } as any);
 
     return createBidder(bidder)
@@ -178,14 +178,14 @@ export const updateBidderAction = (id: number, bidder: Bidder) => (dispatch: Dis
                 type: UPDATE_BIDDER_SUCCESS,
                 result: response.data,
                 id
-            } as any)
+            } as any);
         })
         .catch(error => {
             dispatch(openInfo(`${error.response.data.message} Try later.`));
             return dispatch({
                 type: UPDATE_BIDDER_FAILURE,
                 error: error.response.data
-            })
+            });
         });
 };
 

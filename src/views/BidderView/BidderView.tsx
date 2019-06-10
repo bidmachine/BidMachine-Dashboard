@@ -82,11 +82,11 @@ export class BidderViewComponent extends Component<BidderViewProps & StateProps 
 
     private updateBidder = (bidder: Bidder) => {
         this.props.updateBidder(this.props.params.id, bidder);
-    };
+    }
 
     private selectProfileTab = (profilesTab: number) => {
         this.setState({profilesTab} as any);
-    };
+    }
 
     private loadBidder(id) {
         this.props.requestBidder(id);

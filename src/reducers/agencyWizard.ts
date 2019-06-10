@@ -115,7 +115,7 @@ export const setStepAction = (step: Steps) => ({
 export const createAgencyAction = (agency: Agency) => (dispatch: Dispatch<any>) => {
     dispatch({
         type: CREATE_AGENCY,
-        agency: agency
+        agency
     } as any);
 
     return createAgency(agency)
@@ -132,7 +132,7 @@ export const createAgencyAction = (agency: Agency) => (dispatch: Dispatch<any>) 
 export const createBidderAction = (bidder: Bidder) => (dispatch: Dispatch<any>) => {
     dispatch({
         type: CREATE_BIDDER,
-        bidder: bidder
+        bidder
     } as any);
 
     return createBidder(bidder)

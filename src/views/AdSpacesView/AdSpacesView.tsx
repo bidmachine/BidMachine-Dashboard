@@ -1,7 +1,7 @@
 // import './AdSpacesView.scss';
 import * as React from 'react';
 import {Component} from 'react';
-import * as Select from 'react-select';
+import Select from 'react-select';
 
 import {requestSSPAction} from '../../reducers/SSPSelect';
 import {AppView} from '../../components/AppView';
@@ -94,11 +94,13 @@ export const AdSpacesView = connect<StateProps, DispatchProps, {}>(
     (state: State) => ({
         loading: state.SSPSelect.loading,
         sellers: state.SSPSelect.sellers.sort((a: SSP, b: SSP) => {
-            let [a_name, b_name] = [a.name.toLowerCase(), b.name.toLowerCase()];
-            if (a_name < b_name)
+            const [aName, bName] = [a.name.toLowerCase(), b.name.toLowerCase()];
+            if (aName < bName) {
                 return -1;
-            if (a_name > b_name)
+            }
+            if (aName > bName) {
                 return 1;
+            }
             return 0;
         })
     }),

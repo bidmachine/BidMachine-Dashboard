@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ClassAttributes, Component} from 'react';
 import {connect, Dispatch} from 'react-redux';
-import * as Select from 'react-select';
+import Select from 'react-select';
 import {State} from '../../reducers';
 import {requestBiddersAction} from '../../reducers/biddersSelect';
 import {Bidder} from '../../models/auction/Bidder';

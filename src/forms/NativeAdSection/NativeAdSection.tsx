@@ -5,7 +5,7 @@ import {renderByTemplate, renderField} from '../../lib/form';
 
 export class NativeAdSection extends React.Component<any, {}> {
     render() {
-        let {template} = this.props;
+        const {template} = this.props;
         return <FormSection name='ad'>
             <Field
                 numeric

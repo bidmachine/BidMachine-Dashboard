@@ -28,13 +28,13 @@ class AdSpaceFormComponent extends Component<DispatchProps & AdSpaceProps, {
     state = {
         extArr: new Map(),
         deleteArr: new Map()
-    }
+    };
 
     componentDidMount() {
         const {adSpace} = this.props;
         if (adSpace) {
             let count = 0;
-            for (let key in adSpace) {
+            for (const key in adSpace) {
                 if (key.indexOf('name') > -1) {
                     this.addExt(true);
                     count++;
@@ -52,31 +52,31 @@ class AdSpaceFormComponent extends Component<DispatchProps & AdSpaceProps, {
     addExt = (isInitial: boolean) => {
         const tmpArr = this.state.extArr;
         const {deleteArr} = this.state;
-        let newArr = new Array();
+        const newArr = [];
         newArr.push(`name${tmpArr.size + 1}`);
         newArr.push(`value${tmpArr.size + 1}`);
         tmpArr.set(tmpArr.size + 1, newArr);
-        deleteArr.set(tmpArr.size, true)
+        deleteArr.set(tmpArr.size, true);
         this.setState({
             extArr: tmpArr,
-            deleteArr: deleteArr
+            deleteArr
         });
     }
 
-    deleteExt = (number) => {
+    deleteExt = (index) => {
         const {deleteArr} = this.state;
         const form = `${this.props.tab}AdSpace`;
-        this.props.changeField(form, `name${number}`, '');
-        this.props.changeField(form, `value${number}`, '');
-        this.props.untouchField(form, `name${number}`);
-        this.props.untouchField(form, `value${number}`);
-        let count = Array.from(deleteArr.values()).reduce((sum, val) => {
-            return val ? sum += 1 : sum
+        this.props.changeField(form, `name${index}`, '');
+        this.props.changeField(form, `value${index}`, '');
+        this.props.untouchField(form, `name${index}`);
+        this.props.untouchField(form, `value${index}`);
+        const count = Array.from(deleteArr.values()).reduce((sum, val) => {
+            return val ? sum + 1 : sum;
         }, 0);
         if (count >= 2) {
-            deleteArr.set(number, false);
+            deleteArr.set(index, false);
             this.setState({
-                deleteArr: deleteArr
+                deleteArr
             } as any);
         }
     }
@@ -121,7 +121,7 @@ class AdSpaceFormComponent extends Component<DispatchProps & AdSpaceProps, {
                         <div className='line-break'/>
                         <Button style={{marginLeft: '3px'}} type='button'
                                 onClick={() => this.deleteExt(i + 1)}>Delete</Button>
-                    </div> : null
+                    </div> : null;
             })}
             <div className='form-field'>
                 <label/>
@@ -149,7 +149,7 @@ export const AdSpaceForm = connect<{}, DispatchProps, AdSpaceProps>(
                 return dispatch(change(form, field, value));
             },
             untouchField: (form: string, field: string) => {
-                return dispatch(untouch(form, field))
+                return dispatch(untouch(form, field));
             },
             resetForm: (form: string) => {
                 return dispatch(reset(form));

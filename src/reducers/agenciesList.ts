@@ -147,14 +147,14 @@ export const updateAgencyAction = (id: number, agency: Agency) => (dispatch: Dis
                 type: UPDATE_AGENCY_SUCCESS,
                 result,
                 id
-            } as any)
+            } as any);
         })
         .catch(error => {
             dispatch(openInfo(`${error.response.data.message} Try later.`));
             return dispatch({
                 type: UPDATE_AGENCY_FAILURE,
                 error: error.response.data
-            })
+            });
         });
 };
 

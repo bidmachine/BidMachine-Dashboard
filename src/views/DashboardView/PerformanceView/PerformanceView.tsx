@@ -17,7 +17,7 @@ import {AppView} from '../../../components/AppView';
 import {Button} from '../../../components/Button';
 import {Column, DataTableSorted} from '../../../components/DataTable';
 import {DailyChart} from '../DailyChart/DailyChart';
-import * as Select from 'react-select';
+import Select from 'react-select';
 import {abbreviate, numberWithCommas} from "../../../lib/format";
 import {Progress} from '../../../components/Progress';
 
@@ -169,7 +169,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
                 {!performance[0] && !loading && !loadingDimensions &&
                 <div style={{textAlign: 'center'}}>Error: No data for selected filteres</div>}
             </div>
-        )
+        );
     }
 
     render() {
@@ -185,8 +185,8 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
                         value={selectedDimensions}
                         isLoading={loadingDimensions}
                         options={dimensions.sort((firstValue, secondValue) => {
-                            if (firstValue.label > secondValue.label) return 1;
-                            if (firstValue.label < secondValue.label) return -1;
+                            if (firstValue.label > secondValue.label) { return 1; }
+                            if (firstValue.label < secondValue.label) { return -1; }
                             return 0;
                         })}
                         onChange={this.selectDimensions}/>
@@ -240,7 +240,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
                     <DataTableSorted
                         buttons={[
                             <Button key="shorten" onClick={() => {
-                                this.setState({...this.state, shorten: !this.state.shorten})
+                                this.setState({...this.state, shorten: !this.state.shorten});
                             }}
                                     className={`small ${this.state.shorten ? 'primary' : ''}`}
                                     iconLeft='fa fa-columns'>Shorten</Button>,
@@ -257,7 +257,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
     }
 
     private displayValue(value: number) {
-        return this.state.shorten ? abbreviate(value, 2, false, false) : numberWithCommas(value)
+        return this.state.shorten ? abbreviate(value, 2, false, false) : numberWithCommas(value);
     }
 
     private columns: ((props: any) => Column[]) = (props) => [{
@@ -378,9 +378,9 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
             value: 'feePercents',
             label: 'Fee%',
             total: (_, data) => {
-                let totalExchangeFee = data.reduce((accumulator, currentValue) => accumulator + currentValue.exchangeFee, 0);
-                let totalSpent = data.reduce((accumulator, currentValue) => accumulator + currentValue.spent, 0);
-                return `${(totalExchangeFee / totalSpent * 100).toFixed(2)}%`
+                const totalExchangeFee = data.reduce((accumulator, currentValue) => accumulator + currentValue.exchangeFee, 0);
+                const totalSpent = data.reduce((accumulator, currentValue) => accumulator + currentValue.spent, 0);
+                return `${(totalExchangeFee / totalSpent * 100).toFixed(2)}%`;
             },
             render: item => `${item.feePercents}%`
         }, {
@@ -393,10 +393,10 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
             label: 'Lost Imp Revenue',
             total: total => numberWithCommas(total.toFixed(2).toLocaleString()),
             render: item => numberWithCommas(item.lostImpressionsRevenue.toFixed(2).toLocaleString())
-        }].filter((column: Column) => !column.hide);
+        }].filter((column: Column) => !column.hide)
 
     private secondColumn(props) {
-        let column = {
+        const column = {
             hide: props.collection === 'daily',
             render: this.renderSecondColumn.bind(this),
             value: 'dimension'
@@ -422,16 +422,16 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
     }
 
     private renderSecondColumn(performance: Performance): any {
-        let {collection} = this.props;
+        const {collection} = this.props;
         switch (collection) {
             case 'adType':
             case 'country':
             case 'platform':
             case 'seller':
-                let resource = performance[collection];
+                const resource = performance[collection];
                 return resource ? resource.label : null;
             case 'agency':
-                let {agency} = performance;
+                const {agency} = performance;
                 return agency ? agency.label : null;
         }
         return null;
@@ -448,7 +448,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
         } else {
             this.requestPerformance(this.props.startDate, this.props.endDate, this.props.collection);
         }
-    };
+    }
 
     private setTimer = (timeout: number) => {
         this.props.clearTimer();
@@ -457,7 +457,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
                 this.updatePerformance();
             }, timeout));
         }
-    };
+    }
 
     private loadDimensions = (collection: Collection, startDate: Moment, endDate: Moment) => {
         this.setState({
@@ -472,12 +472,12 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
                 dimensions: response.data,
                 loadingDimensions: false
             } as any));
-    };
+    }
 
     private selectDimensions = selectedDimensions => {
         this.props.clearPerormance();
         this.setState({selectedDimensions} as any);
-    };
+    }
 
     private requestPerformance = (startDate: Moment, endDate: Moment, collection: Collection, dimensions?: any[]) => {
         if (collection === 'app' && dimensions.length === 0) {
@@ -485,7 +485,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
         } else {
             this.props.requestPerformance(startDate, endDate, collection, dimensions);
         }
-    };
+    }
 
     private requestPerformanceForCollection = () => {
         if (splitDimensions(this.state.selectedDimensions)) {
@@ -496,7 +496,7 @@ export class PerformanceViewComponent extends React.Component<PerformanceViewPro
                 splitDimensions(this.state.selectedDimensions)
             );
         }
-    };
+    }
 
     private setAreaGraphic = () => {
         this.setState({graphic: 'area'} as any);

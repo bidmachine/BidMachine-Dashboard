@@ -37,6 +37,7 @@ export class Tabs extends Component<TabsProps, {}> {
     }
 
     private select = (i: number) => {
-        this.props.onSelect && this.props.onSelect(i);
-    };
+        const {onSelect} = this.props;
+        if (onSelect) { onSelect(i); }
+    }
 }

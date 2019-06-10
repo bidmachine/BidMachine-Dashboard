@@ -26,7 +26,7 @@ export class AgencyBidderCreateViewComponent extends Component<StateProps & Disp
     createBidder = async (bidder: Bidder) => {
         await this.props.createBidder(bidder);
         this.props.onCancel ? this.props.onCancel() : browserHistory.push('/agencies/' + this.props.agencyId);
-    };
+    }
 
     render() {
         return <AppView>

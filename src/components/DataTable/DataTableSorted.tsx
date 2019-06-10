@@ -1,7 +1,7 @@
 // import './DataTableSorted.scss';
 import * as React from 'react';
 import {Component} from 'react';
-import {DataTable, TableProps,} from './';
+import {DataTable, TableProps, } from './';
 import {SortDirection} from '../../lib/ItemsListState';
 
 interface DataTableSortedProps extends TableProps {
@@ -19,8 +19,8 @@ export class DataTableSorted extends Component<DataTableSortedProps, {
     };
 
     componentWillMount() {
-        if (this.props.sortColumn) this.state.sortColumn = this.props.sortColumn;
-        if (this.props.sortDirection) this.state.sortDirection = this.props.sortDirection;
+        if (this.props.sortColumn) { this.state.sortColumn = this.props.sortColumn; }
+        if (this.props.sortDirection) { this.state.sortDirection = this.props.sortDirection; }
     }
 
     render() {
@@ -48,5 +48,5 @@ export class DataTableSorted extends Component<DataTableSortedProps, {
     private onSort = (sortColumn: string, sortDirection: SortDirection) => this.setState({
         sortColumn,
         sortDirection
-    } as any);
+    } as any)
 }

@@ -38,7 +38,7 @@ export class SSPViewComponent extends React.Component<SSPViewOwnProps & SSPViewS
 }> {
     state = {
         createModal: false
-    }
+    };
 
     private SSPColumns: Column[] = [{
         value: 'id',
@@ -101,7 +101,7 @@ export class SSPViewComponent extends React.Component<SSPViewOwnProps & SSPViewS
                 <Button className='primary' iconLeft='fa fa-plus-circle' onClick={this.openCreateModal}>Create
                     SSP</Button>
             </div>
-        )
+        );
     }
 
     render() {
@@ -131,8 +131,8 @@ export class SSPViewComponent extends React.Component<SSPViewOwnProps & SSPViewS
 
     private closeCreateModal = () => {
         this.props.requestSSP();
-        this.setState({createModal: false} as any)
-    };
+        this.setState({createModal: false} as any);
+    }
 }
 
 export const SSPView = connect<SSPViewStateProps, SSPViewDispatchProps, SSPViewOwnProps>(
@@ -146,9 +146,10 @@ export const SSPView = connect<SSPViewStateProps, SSPViewDispatchProps, SSPViewO
         return {
             requestSSP: () => dispatch(requestSSPAction()),
             deleteSSP: (id: number) => dispatch(deleteSSPAction(id)),
-            toggleSSP: (seller: SSP) => dispatch(openConfirmYesNo(`${!seller.active ? 'Activate' : 'Deactivate'} SSP?`, () => {
-                dispatch(toggleSSPAction(seller.id, {...seller, active: !seller.active}));
-            })),
+            toggleSSP: (seller: SSP) => dispatch(openConfirmYesNo(
+                `${!seller.active ? 'Activate' : 'Deactivate'} SSP?`,
+                () => dispatch(toggleSSPAction(seller.id, {...seller, active: !seller.active}))
+            )),
             confirmDeleteSSP: (onOk: () => any) => dispatch(openConfirmYesNo('Delete SSP?', onOk))
         };
     }

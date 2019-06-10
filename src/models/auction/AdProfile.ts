@@ -27,14 +27,14 @@ export const defaultAdProfile = {
 };
 
 export function validateAdProfileBanner(ad: Banner): object {
-    let errors: any = {};
-    if (!ad.w || ad.w == 0) errors.w = 'Required';
-    if (!ad.h || ad.w == 0) errors.h = 'Required';
-    return errors
+    const errors: any = {};
+    if (!ad.w || ad.w === 0) { errors.w = 'Required'; }
+    if (!ad.h || ad.w === 0) { errors.h = 'Required'; }
+    return errors;
 }
 
 export function validateAdProfileNative(ad: Native): object {
-    return {}
+    return {};
 }
 
 export function validateAdProfileVideo(ad: Video): object {
@@ -43,7 +43,7 @@ export function validateAdProfileVideo(ad: Video): object {
 
 export function validateAdProfile(adProfile: AdProfile, adProfileType: AdProfileType) {
     let errors: any = {};
-    if (!adProfile.bidderId) errors.bidderId = 'Required';
+    if (!adProfile.bidderId) { errors.bidderId = 'Required'; }
     switch (adProfileType) {
         case 'banner':
             errors = {...errors, ad: validateAdProfileBanner(adProfile.ad as Banner)};

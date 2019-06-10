@@ -12,7 +12,7 @@ export class AdProfileForm extends React.Component<any, {}> {
         const {handleSubmit, children, readonlyProfile, onCancel, submitting, template} = this.props;
         const type = this.props.form.slice(0, this.props.form.length - 9).toLowerCase();
         const templates = templatesForSelect.filter(val => {
-            if (type === 'banner') return val.label.toLowerCase().indexOf(type) > -1 || val.label.toLowerCase().indexOf('interstitial') > -1 ? val : null;
+            if (type === 'banner') { return val.label.toLowerCase().indexOf(type) > -1 || val.label.toLowerCase().indexOf('interstitial') > -1 ? val : null; }
             return val.label.toLowerCase().indexOf(type) > -1 ? val : null;
         });
         return <form className='model-form' onSubmit={handleSubmit}>

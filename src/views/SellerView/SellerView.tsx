@@ -58,7 +58,7 @@ export class SellerViewComponent extends Component<SSPViewProps & SSPViewStatePr
 
     private updateSSP = (seller: SSP) => {
         this.props.updateSSP(this.props.params.id, seller);
-    };
+    }
 
     private loadSeller(id) {
         this.props.requestSSP(id);

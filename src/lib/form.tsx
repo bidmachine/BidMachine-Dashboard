@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Select from 'react-select';
+import Select from 'react-select';
 import {FieldConfig, templateById} from "../models/auction/AdProfieleTempate";
 import {change, untouch} from 'redux-form';
 import {store} from '../index';
@@ -101,8 +101,8 @@ export function renderMultiSelectNumericField(field: Field) {
 }
 
 export function renderField({input, meta, ...custom}) {
-    let field = {
-        input: input,
+    const field = {
+        input,
         meta: meta as FieldMeta,
         ...custom
     } as Field;
@@ -124,7 +124,7 @@ export function renderField({input, meta, ...custom}) {
                     key='input'
                     className='checkbox'
                     onClick={() => {
-                        if (!field.input.disabled && !field.disabled) field.input.onChange(!field.input.value)
+                        if (!field.input.disabled && !field.disabled) { field.input.onChange(!field.input.value); }
                     }}>
                     {field.switcher
                         ? <i style={{color: field.input.value ? 'green' : 'red'}}
@@ -139,7 +139,7 @@ export function renderField({input, meta, ...custom}) {
         }
         case 'ext': {
             return <input disabled={field.input.disabled} {...custom} {...field.input} placeholder={field.placeholder}
-                          type='text'/>
+                          type='text'/>;
         }
         default: {
             return <div className='form-field'>
@@ -156,10 +156,10 @@ export function renderByTemplate(template, component) {
     return (field: Field) => {
         if (template) {
             const config = template.fields[field.input.name] as FieldConfig;
-            if (!config) return component(field); // If config not defined
-            if (config.hidden) return null;
+            if (!config) { return component(field); } // If config not defined
+            if (config.hidden) { return null; }
             field.input.disabled = config.disabled;
         }
-        return component(field)
-    }
+        return component(field);
+    };
 }

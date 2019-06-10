@@ -8,22 +8,22 @@ import {VideoQuality} from './VideoQuality';
 
 export interface Content extends IdString {
     episode?: number;
-    title?: String;
-    series?: String;
-    season?: String;
+    title?: string;
+    series?: string;
+    season?: string;
     producer?: Producer;
     url?: string;
     cat?: string[];
     videoquality?: VideoQuality;
     context?: ContentContext;
-    contentrating?: String;
-    userrating?: String;
+    contentrating?: string;
+    userrating?: string;
     qagmediarating?: QagMediaRating;
-    keywords?: String;
-    livestream?: Boolean;
+    keywords?: string;
+    livestream?: boolean;
     sourcerelationship?: number;
     len?: number;
-    lanuage?: String;
-    embeddable?: Boolean;
+    lanuage?: string;
+    embeddable?: boolean;
     ext?: Ext;
 }

@@ -8,7 +8,7 @@ export const BidderFormEdit: any = connect((state: State) => {
     const worldwide = selector(state, 'worldwide');
     let selected = state.biddersList.selected;
     if (!selected.includedSellers) {
-        selected = {...selected, includedSellers: [1]}
+        selected = {...selected, includedSellers: [1]};
     }
     return {
         worldwide,

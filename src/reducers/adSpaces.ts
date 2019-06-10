@@ -48,19 +48,19 @@ export function reducer(state: State = initialState, action: Actions) {
         case REQUEST_AD_SPACES_SUCCESS: {
             let spaces: AdSpace[] = (action as any).spaces;
             spaces = spaces.map((value) => {
-                let newObj = {};
+                const newObj = {};
                 let count = 1;
                 if (value['ad']['ext']) {
-                    for (let key in value['ad']['ext']) {
+                    for (const key of Object.keys(value['ad']['ext'])) {
                         newObj[`name${count}`] = key;
-                        newObj[`value${count}`] = value['ad']['ext'][key]
+                        newObj[`value${count}`] = value['ad']['ext'][key];
                         count++;
                     }
-                    return Object.assign(value, newObj)
+                    return Object.assign(value, newObj);
                 } else {
                     return value;
                 }
-            })
+            });
             return {
                 ...state,
                 ...receiveItemsList<number, AdSpace>(spaces)
@@ -76,11 +76,11 @@ export function reducer(state: State = initialState, action: Actions) {
 
         case CREATE_AD_SPACE_SUCCESS: {
             const space: AdSpace = (action as any).space;
-            let newObj = {};
+            const newObj = {};
             let count = 1;
-            for (let key in space['ad']['ext']) {
+            for (const key of Object.keys(space['ad']['ext'])) {
                 newObj[`name${count}`] = key;
-                newObj[`value${count}`] = space['ad']['ext'][key]
+                newObj[`value${count}`] = space['ad']['ext'][key];
                 count++;
             }
             Object.assign(space, newObj);
@@ -89,17 +89,17 @@ export function reducer(state: State = initialState, action: Actions) {
 
         case UPDATE_AD_SPACE_SUCCESS: {
             const {id, adSpace} = (action as any);
-            let newObj = {};
+            const newObj = {};
             let count = 1;
-            for (let key in adSpace) {
+            for (const key in adSpace) {
                 if (key.indexOf('name') > -1 || key.indexOf('value') > -1) {
                     delete adSpace[key];
                 }
             }
-            for (let key in adSpace['ad']['ext']) {
-                newObj[`name${count}`] = key;
-                newObj[`value${count}`] = adSpace['ad']['ext'][key];
-                count++;
+            for (const key of Object.keys(adSpace['ad']['ext'])) {
+                    newObj[`name${count}`] = key;
+                    newObj[`value${count}`] = adSpace['ad']['ext'][key];
+                    count++;
             }
             Object.assign(adSpace, newObj);
             return updateItemAdSpace(state, id, adSpace);
@@ -147,7 +147,7 @@ export const createAdSpaceAction = (adSpaceType: AdSpaceType, sellerId: number, 
         sellerId,
         space
     } as any);
-    for (let key in space) {
+    for (const key in space) {
         if (key.indexOf('name') > -1 || key.indexOf('value') > -1) {
             delete space[key];
         }
@@ -176,12 +176,12 @@ export const updateAdSpaceAction = (adSpaceType: AdSpaceType, id: number, adSpac
         id,
         adSpace
     } as any);
-    for (let key in adSpace) {
+    for (const key in adSpace) {
         if (key.indexOf('name') > -1 || key.indexOf('value') > -1) {
             delete adSpace[key];
         }
     }
-    for (let key in adSpace['ad']) {
+    for (const key in adSpace['ad']) {
         if (key === 'w' || key === 'h') {
             if (adSpace['ad'][key] === '') {
                 delete adSpace['ad'][key];

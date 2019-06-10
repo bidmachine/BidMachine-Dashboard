@@ -46,11 +46,11 @@ const tabs: Collection[] = [
 const Dateformat = 'YYYY-MM-DD';
 
 function query(tab: string, startDate: string, endDate: string): string {
-    let url = new URLSearchParams();
+    const url = new URLSearchParams();
     url.append('tab', tab);
     url.append('startDate', startDate);
     url.append('endDate', endDate);
-    return '?' + url.toString()
+    return '?' + url.toString();
 }
 
 enum ValidIntervals {
@@ -185,7 +185,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
 
     private setPerformanceTab = (tab: number) => {
         this.redirect(tabs[tab]);
-    };
+    }
 
     private setDateRange = (range: DateRange) => {
         if (range.startDate && range.endDate) {
@@ -196,7 +196,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             );
         }
         this.props.setDateRange(range);
-    };
+    }
 
     private setLocalDateRange = (range: DateRange) => {
         const stateUpdate: any = {};
@@ -210,7 +210,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             this.setState({range: stateUpdate});
             this.setDateRange(stateUpdate);
         }
-    };
+    }
 
     private setToday = () => {
         this.setDateRange({
@@ -218,7 +218,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private setYesterday = () => {
         this.setDateRange({
@@ -226,7 +226,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().subtract(1, 'day').endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     // private setTimeout = (timeout) => this.setState({ timeout });
     private set7days = () => {
@@ -235,7 +235,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private set30days = () => {
         this.setDateRange({
@@ -243,7 +243,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private setThisMonth = () => {
         this.setDateRange({
@@ -251,7 +251,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private setLastMonth = () => {
         this.setDateRange({
@@ -259,7 +259,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().subtract(1, 'month').endOf('month').endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private set60days = () => {
         this.setDateRange({
@@ -267,7 +267,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private set90days = () => {
         this.setDateRange({
@@ -275,7 +275,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             endDate: moment().endOf('day')
         });
         this.setState({focusedInput: null} as any);
-    };
+    }
 
     private renderCalendarInfo = () => {
         const {startDate, endDate} = this.props;
@@ -328,7 +328,7 @@ export class DashboardViewComponent extends React.Component<DashboardViewProps &
             <Button onClick={this.set90days} className={`small${selected === ValidIntervals.days90 ? ' primary' : ''}`}>Last
                 90 days</Button>
         </div>;
-    };
+    }
 
     private redirect(tab = tabs[this.props.performanceTab],
                      startDate = this.props.startDate.format(Dateformat),

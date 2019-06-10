@@ -73,7 +73,7 @@ input[disabled] {
   }
 }
 
-.rt-thead, -header {
+.rt-thead {
   z-index: 9;
 
   .rt-th {
@@ -81,7 +81,6 @@ input[disabled] {
 
   }
 }
-
 
 .copy-element {
   button {

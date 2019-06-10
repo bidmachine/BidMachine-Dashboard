@@ -7,13 +7,13 @@ import {State} from '../../reducers';
 import {renderField} from '../../lib/form';
 import {Button} from '../../components/Button';
 
+
 export class AgencyFormComponent extends React.Component<any, {}> {
     getNewLocation = () => {
         if ((location.pathname.indexOf('/agencies') === 0)) {
             return '/clients';
         }
-        const newPath = location.pathname.split('/').slice(0, -1).join('/');
-        return newPath
+        return location.pathname.split('/').slice(0, -1).join('/');
     }
 
     render() {

@@ -41,9 +41,9 @@ export class BiddersList extends React.Component<{
         value: 'auctionType',
         label: 'Auction Price',
         render: (bidder: Bidder) => (
-            bidder.auctionType == AuctionType.FirstPrice
+            bidder.auctionType === AuctionType.FirstPrice
                 ? 'First'
-                : bidder.auctionType == AuctionType.SecondPrice
+                : bidder.auctionType === AuctionType.SecondPrice
                 ? 'Second'
                 : ''
         )

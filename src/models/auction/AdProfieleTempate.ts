@@ -1,10 +1,10 @@
-import dotProp = require("dot-prop");
-import merge from 'deepmerge'
+import dotProp = require('dot-prop');
+import merge from 'deepmerge';
 
 export interface FieldConfig {
-    disabled?: boolean
-    hidden?: boolean
-    value?: any
+    disabled?: boolean;
+    hidden?: boolean;
+    value?: any;
 }
 
 export interface FieldsConfig {
@@ -12,20 +12,21 @@ export interface FieldsConfig {
 }
 
 export interface AdProfileTemplateConfig {
-    id: string
-    name: string
-    fields: FieldsConfig
+    id: string;
+    name: string;
+    fields: FieldsConfig;
 }
 
 export function valuesFromTemplate(template: AdProfileTemplateConfig, defaults) {
     const fields = template.fields;
     return merge(defaults, Object.keys(fields).reduce((result, field) => {
-        let config = fields[field];
-        if (config.hasOwnProperty('value')) dotProp.set(result, field, config.value);
-        return result
-    }, {}), {arrayMerge: (_d, s) => (s)});
+        const config = fields[field];
+        if (config.hasOwnProperty('value')) {
+            dotProp.set(result, field, config.value);
+        }
+        return result;
+    }, {}), {arrayMerge: (_, s) => (s)});
 }
-
 
 export const BannerDefaults = {
     'interstitial': {hidden: true},
@@ -41,7 +42,7 @@ export const BannerDefaults = {
     'ad.api': {value: [3, 5]},
     'title': {disabled: true},
     'ad.w': {disabled: true},
-    'ad.h': {disabled: true},
+    'ad.h': {disabled: true}
 };
 
 export const InterstitialDefaults = {
@@ -58,10 +59,10 @@ export const InterstitialDefaults = {
     'ad.api': {disabled: true, value: [3, 5]},
     'title': {disabled: true},
     'ad.w': {disabled: true},
-    'ad.h': {disabled: true},
+    'ad.h': {disabled: true}
 };
 
-export const BannerTemplates = <AdProfileTemplateConfig[]>[
+export const BannerTemplates = [
     {
         id: 'b565f3b0-2925-4876-bae9-2619b68847e0',
         name: 'Banner 320x50',
@@ -70,7 +71,7 @@ export const BannerTemplates = <AdProfileTemplateConfig[]>[
             'template': {value: 'b565f3b0-2925-4876-bae9-2619b68847e0', hidden: true},
             'title': {value: 'Banner 320x50', disabled: true},
             'ad.w': {value: 320, disabled: true},
-            'ad.h': {value: 50, disabled: true},
+            'ad.h': {value: 50, disabled: true}
         }
     },
     {
@@ -81,7 +82,7 @@ export const BannerTemplates = <AdProfileTemplateConfig[]>[
             'template': {value: '226627fc-5ec1-4926-998f-0b111f703835', hidden: true},
             'title': {value: 'Banner 728x90', disabled: true},
             'ad.w': {value: 728, disabled: true},
-            'ad.h': {value: 90, disabled: true},
+            'ad.h': {value: 90, disabled: true}
         }
     } as AdProfileTemplateConfig,
     {
@@ -92,7 +93,7 @@ export const BannerTemplates = <AdProfileTemplateConfig[]>[
             'template': {value: '2df77b09-2e5b-4670-8d10-f72927747daa', hidden: true},
             'title': {value: 'Interstitial 320x480', disabled: true},
             'ad.w': {value: 320, disabled: true},
-            'ad.h': {value: 480, disabled: true},
+            'ad.h': {value: 480, disabled: true}
         }
     } as AdProfileTemplateConfig,
     {
@@ -103,7 +104,7 @@ export const BannerTemplates = <AdProfileTemplateConfig[]>[
             'template': {value: '9bf27b1f-fe0f-4908-8ed6-c9ae90779925', hidden: true},
             'title': {value: 'Interstitial 480x320', disabled: true},
             'ad.w': {value: 480, disabled: true},
-            'ad.h': {value: 320, disabled: true},
+            'ad.h': {value: 320, disabled: true}
         }
     },
     {
@@ -114,7 +115,7 @@ export const BannerTemplates = <AdProfileTemplateConfig[]>[
             'template': {value: '8e029f92-de00-448c-9d16-920563b79c2f', hidden: true},
             'title': {value: 'Interstitial 768x1024', disabled: true},
             'ad.w': {value: 768, disabled: true},
-            'ad.h': {value: 1024, disabled: true},
+            'ad.h': {value: 1024, disabled: true}
         }
     },
     {
@@ -125,12 +126,12 @@ export const BannerTemplates = <AdProfileTemplateConfig[]>[
             'template': {value: 'd2a1d9b7-23db-4f29-9ada-04146ea433a5', hidden: true},
             'title': {value: 'Interstitial 1024x768', disabled: true},
             'ad.w': {value: 1024, disabled: true},
-            'ad.h': {value: 768, disabled: true},
+            'ad.h': {value: 768, disabled: true}
         }
     }
-];
+] as AdProfileTemplateConfig[];
 
-export const NativeTemplates = <AdProfileTemplateConfig[]>[
+export const NativeTemplates = [
     {
         id: 'd2afef46-867f-4a44-9151-c3e3cba74c4e',
         name: 'Native',
@@ -144,7 +145,7 @@ export const NativeTemplates = <AdProfileTemplateConfig[]>[
             'ad.battr': {hidden: true}
         }
     }
-];
+] as AdProfileTemplateConfig[];
 
 export const VideoDefaults = {
     'active': {value: false},
@@ -173,14 +174,14 @@ export const VideoDefaults = {
     'ad.api': {hidden: true}
 };
 
-export const VideoTemplates = <AdProfileTemplateConfig[]>[
+export const VideoTemplates = [
     {
         id: '95857226-dab5-4b16-b272-2ae4754161f0',
         name: 'Skippable video',
         fields: {
             ...VideoDefaults,
-            'template': {value: '95857226-dab5-4b16-b272-2ae4754161f0', hidden: true},
-            'title': {value: 'Skippable video', disabled: true},
+            template: {value: '95857226-dab5-4b16-b272-2ae4754161f0', hidden: true},
+            title: {value: 'Skippable video', disabled: true}
         }
     },
     {
@@ -188,11 +189,11 @@ export const VideoTemplates = <AdProfileTemplateConfig[]>[
         name: 'Non skippable video',
         fields: {
             ...VideoDefaults,
-            'template': {value: 'b0c6d86f-310a-4a97-8ec1-37f8409252e7', hidden: true},
-            'title': {value: 'Non skippable video', disabled: true},
+            template: {value: 'b0c6d86f-310a-4a97-8ec1-37f8409252e7', hidden: true},
+            title: {value: 'Non skippable video', disabled: true}
         }
     }
-];
+] as AdProfileTemplateConfig[];
 
 export const templatesForSelect = [...BannerTemplates, ...NativeTemplates, ...VideoTemplates].map(template => ({
     label: template.name,
@@ -200,11 +201,11 @@ export const templatesForSelect = [...BannerTemplates, ...NativeTemplates, ...Vi
 }));
 
 export const templatesByType = {
-    'banner': BannerTemplates,
-    'native': NativeTemplates,
-    'video': VideoTemplates
+    banner: BannerTemplates,
+    native: NativeTemplates,
+    video: VideoTemplates
 };
 
 export function templateById(id: string): AdProfileTemplateConfig {
-    return [...BannerTemplates, ...NativeTemplates, ...VideoTemplates].find(template => template.id == id)
+    return [...BannerTemplates, ...NativeTemplates, ...VideoTemplates].find(template => template.id === id);
 }

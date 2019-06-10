@@ -16,22 +16,22 @@ interface SidebarItemProps extends ClassAttributes<SidebarItem> {
 export class SidebarItem extends Component<SidebarItemProps, {}> {
     render() {
         const {link, label, icon, active, disabled, external} = this.props;
-        let classes = ['sidebar-item'];
+        const classes = ['sidebar-item'];
 
-        if (active) classes.push('active');
+        if (active) { classes.push('active'); }
         if (disabled) {
             classes.push('disabled');
-            return <a disabled={disabled} className={classes.join(' ')}>
+            return <a className={classes.join(' ')}>
                 <i className={icon} style={this.props.iconStyle}/>
                 <span>{label}</span>
             </a>;
         } else {
-            let inner = [
+            const inner = [
                 <i key="icon" className={icon} style={this.props.iconStyle}/>,
                 <span key="label">{label}</span>
             ];
             if (external) {
-                return <a disabled={disabled} href={link} className={classes.join(' ')} target="_blank">{inner}</a>;
+                return <a href={link} className={classes.join(' ')} target="_blank">{inner}</a>;
             } else {
                 return <Link disabled={disabled} to={link} className={classes.join(' ')}>{inner}</Link>;
             }

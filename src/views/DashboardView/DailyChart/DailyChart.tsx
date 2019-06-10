@@ -17,7 +17,7 @@ import {
     XAxis,
     YAxis
 } from 'recharts';
-import * as Select from 'react-select';
+import Select from 'react-select';
 
 import {numberWithCommas} from "../../../lib/format";
 import {setFirstLineAction, setLineForBarAction, setSecondLineAction} from '../../../reducers/statistics';
@@ -170,18 +170,18 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
             secondSelectArray: this.getArrayWithoutLine(firstLine),
             lineBarArray: this.getArrayForBar(),
             barArray: this.getArrayForBarDimensions(barLine),
-            disabledArea: disabledArea
+            disabledArea
         }, () => {
             activeDimensions.map(value => {
                 disabledBar.set(value.key, 1);
             });
             this.setState({
-                disabledBar: disabledBar
+                disabledBar
             }, () => {
                 this.setState({
                     areaData: this.getArrayForDimensions()
                 });
-            })
+            });
         });
     }
 
@@ -253,7 +253,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                                             stroke: colors[i],
                                             r: 4
                                         }}
-                                        fill={colors[i]}/> : null)
+                                        fill={colors[i]}/> : null);
                                 }) : null
                             }
                             {firstLine !== 'none' && ((!rateFlagFirst && !rateFlagSecond) || collection === 'daily') ?
@@ -321,7 +321,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                                 errors: value.errors,
                                 impressions: value.impressions,
                                 bids: value.bids
-                            }
+                            };
                         })}
                         stackOffset='expand'>
                         <XAxis dataKey='timestamp'/>
@@ -331,16 +331,16 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                         <Tooltip content={this.renderTooltipContent}/>
                         {disabledArea.get('bids') !== 0 ?
                             <Area animationDuration={500} type='monotone' fillOpacity='0.99' dataKey='bids'
-                                  stroke="#8884d8" fill='#8884d8'></Area> : null}
+                                  stroke="#8884d8" fill='#8884d8'/> : null}
                         {disabledArea.get('wins') !== 0 ?
                             <Area animationDuration={500} type='monotone' fillOpacity='0.99' dataKey='wins'
-                                  stroke="#ffc658" fill='#ffc658'></Area> : null}
+                                  stroke="#ffc658" fill='#ffc658'/> : null}
                         {disabledArea.get('errors') !== 0 ?
                             <Area animationDuration={500} type='monotone' fillOpacity='0.99' dataKey='errors'
-                                  stroke="#E11916" fill='#E11916'></Area> : null}
+                                  stroke="#E11916" fill='#E11916'/> : null}
                         {disabledArea.get('impressions') !== 0 ?
                             <Area animationDuration={500} type='monotone' dataKey='impressions' stroke="#82ca9d"
-                                  fill="#82ca9d"></Area> : null}
+                                  fill="#82ca9d"/> : null}
                     </AreaChart>
                 </ResponsiveContainer>
             </div>}
@@ -384,7 +384,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
 
     private getArrayForSelect = () => {
         const {data} = this.props;
-        let arr = [];
+        const arr = [];
         Object.keys(data[0]).forEach((value, key) => {
             if (value !== 'agency' && value !== 'adType' && value !== 'platform' && value !== 'country' && value !== 'seller') {
                 arr[key] = value;
@@ -399,7 +399,6 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                 return 'None';
             case 'sspIncome':
                 return 'SSP Income';
-                ;
             case 'ctr':
                 return 'CTR';
             case 'ecpm':
@@ -417,7 +416,6 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
             default:
                 return value.slice(0, 1).toUpperCase() + value.slice(1, value.length);
         }
-        ;
     }
 
     private getArrayForBar = () => {
@@ -425,8 +423,8 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
         return allPerformanceArray.filter(value => {
             return value !== 'errorRate' && value !== 'displayRate' && value !== 'ctr' && value !== 'ecpm' && value !== 'name';
         }).map(value => {
-            let newVal = value;
-            let newLab = this.getValue(value);
+            const newVal = value;
+            const newLab = this.getValue(value);
             return {
                 value: newVal,
                 label: newLab
@@ -436,13 +434,13 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
 
     private getArrayWithoutLine = (line: string) => {
         const allPerformanceArray = this.getArrayForSelect();
-        let lineTmp = line === 'none' ? 'name' : line;
+        const lineTmp = line === 'none' ? 'name' : line;
         const arr = allPerformanceArray.filter(value => {
             return value !== lineTmp;
         });
         return arr.map(value => {
-            let newVal = value !== 'name' ? value : 'none';
-            let newLab = this.getValue(value);
+            const newVal = value !== 'name' ? value : 'none';
+            const newLab = this.getValue(value);
             return {
                 value: newVal,
                 label: newLab
@@ -475,11 +473,11 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                         });
                     }
                     this.setState({
-                        disabledBar: disabledBar
+                        disabledBar
                     }, () => {
                         this.setState({
                             areaData: this.getArrayForDimensions()
-                        })
+                        });
                     });
                 });
             });
@@ -494,7 +492,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                 });
             });
         }
-    };
+    }
 
     private onChangeSecondLine = (newValue) => {
         if (this.props.collection !== 'daily' && this.props.dimensions.length > 1 && (newValue === 'displayRate' || newValue === 'errorRate' || newValue === 'ecpm' || newValue === 'ctr')) {
@@ -521,11 +519,11 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                         });
                     }
                     this.setState({
-                        disabledBar: disabledBar
+                        disabledBar
                     }, () => {
                         this.setState({
                             areaData: this.getArrayForDimensions()
-                        })
+                        });
                     });
                 });
             });
@@ -540,7 +538,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                 });
             });
         }
-    };
+    }
 
     private onChangeLineBarArray = (newValue) => {
         this.props.setLineForBar(newValue);
@@ -562,11 +560,11 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                 });
             }
             this.setState({
-                disabledBar: disabledBar
+                disabledBar
             }, () => {
                 this.setState({
                     areaData: this.getArrayForDimensions()
-                })
+                });
             });
         });
     }
@@ -582,14 +580,14 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                             if (entry.value || entry.value === 0) {
                                 return (<li key={`item-${index}`} style={{color: entry.color}}>
                                     {`${entry.name}: ${numberWithCommas(Math.round(entry.value * 100) / 100)}`}
-                                </li>)
+                                </li>);
                             }
                         })
                     }
                 </ul>
             </div>
         );
-    };
+    }
 
     private getArrayForBarDimensions = (barLine) => {
         const {data} = this.props;
@@ -597,16 +595,16 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
         activeDimensions.splice(0, activeDimensions.length);
         const arr = data.map((value, i) => {
             const line = value.country ? value.country.label : value.adType ? value.adType.label : value.platform ? value.platform.label : value.agency ? value.agency.label : value.seller ? value.seller.label : null;
-            let tmp = {
+            const tmp = {
                 name: value.name
             };
             tmp[line] = value[barLine];
             return tmp;
         });
-        let mapArr = arr.reduce((map, value, index, arr) => {
+        const mapArr = arr.reduce((map, value, index, arr) => {
             if (map.has(value.name)) {
                 const mapValue = map.get(value.name);
-                let data = {};
+                const data = {};
                 Object.assign(data, value, mapValue);
                 map.set(value.name, data);
             } else {
@@ -614,19 +612,20 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
             }
             return map;
         }, new Map());
-        let newData = Array.from(mapArr.values())
+        let newData = Array.from(mapArr.values());
         newData = newData.map((value, i) => {
-            var arr = [];
-            for (let key in value) {
-                if (key !== 'name') arr.push({key: key, value: value[key]});
+            const arr = [];
+            for (const key in value) {
+                if (key !== 'name') { arr.push({key, value: value[key]}); }
             }
             if (arr.length < 11) {
                 return value;
             }
-            if (activeDimensions.findIndex(value => value === 'other') !== -1) activeDimensions.push({
+            if (activeDimensions.findIndex(value => value === 'other') !== -1) { activeDimensions.push({
                 key: 'other',
                 value: newData.pop
             });
+            }
             arr.sort((a, b) => {
                 if (a.value > b.value) {
                     return -1;
@@ -644,8 +643,8 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
             return value;
         });
         newData.map(value => {
-            for (let key in value) {
-                key !== 'name' ? activeDimensions.push({key: key, value: value[key]}) : null;
+            for (const key in value) {
+                if (key !== 'name') { activeDimensions.push({key, value: value[key]}); }
             }
         });
         this.setState({
@@ -663,11 +662,11 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
     }
 
     private getArrayForDimensions = () => {
-        if (this.props.collection === 'daily' || this.props.dimensions.length === 1) return this.props.data;
+        if (this.props.collection === 'daily' || this.props.dimensions.length === 1) { return this.props.data; }
         const arr = this.props.data;
         const {graphic} = this.props;
         const {disabledBar} = this.state;
-        var mapArr = new Map();
+        const mapArr = new Map();
         arr.map((value) => {
             const line = value.country ? value.country.label : value.adType ? value.adType.label : value.platform ? value.platform.label : value.agency ? value.agency.label : value.seller ? value.seller.label : null;
             if (graphic === 'line' || Array.from(disabledBar.keys()).findIndex(val => val === line && disabledBar.get(line) !== 0) > -1) {
@@ -692,14 +691,14 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                     mapArr.set(value.name, value);
                 }
             }
-        })
+        });
         return Array.from(mapArr.values());
     }
 
     private unique = (arr) => {
-        let mas = [];
+        const mas = [];
         arr.map(val => {
-            if (mas.findIndex(value => value.key === val.key) === -1) mas.push(val);
+            if (mas.findIndex(value => value.key === val.key) === -1) { mas.push(val); }
         });
         return mas;
     }
@@ -708,7 +707,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
         const {disabledArea} = this.state;
         const current = disabledArea.get(event.target.outerText);
         const tmp = Array.from(disabledArea.values()).reduce((acc, cur) => {
-            return cur === 1 ? acc += cur : acc;
+            return cur === 1 ? acc + cur : acc;
         }, 0);
         if (tmp > 1 || current === 0) {
             if (current !== 0) {
@@ -726,9 +725,9 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
         const {disabledBar} = this.state;
         const {barLine, graphic} = this.props;
         const current = disabledBar.get(event.target.outerText);
-        if (disabledBar.get('other') && graphic === 'line') disabledBar.delete('other');
+        if (disabledBar.get('other') && graphic === 'line') { disabledBar.delete('other'); }
         const tmp = Array.from(disabledBar.values()).reduce((acc, cur) => {
-            return cur === 1 ? acc += cur : acc;
+            return cur === 1 ? acc + cur : acc;
         }, 0);
         if (tmp > 1 || current === 0) {
             if (current !== 0) {
@@ -739,7 +738,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                 }, () => {
                     this.setState({
                         areaData: this.getArrayForDimensions()
-                    })
+                    });
                 });
             }
             this.setState({
@@ -749,7 +748,7 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
             }, () => {
                 this.setState({
                     areaData: this.getArrayForDimensions()
-                })
+                });
             });
         }
     }
@@ -764,14 +763,14 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                         let color = '#dce3e7';
                         const ind = payload.findIndex(value => value.dataKey === entry);
                         if (payload[ind]) {
-                            if (ind !== -1) color = payload[ind].color;
+                            if (ind !== -1) { color = payload[ind].color; }
                         }
                         return (<div key={`item-${index}`}
-                                     style={{color: color, display: 'inline-block', marginRight: '5px'}}>
+                                     style={{color, display: 'inline-block', marginRight: '5px'}}>
                             <Icon size={10} icon={square} style={{backgroundColor: color}}/>
                             <div style={{display: 'inline-block', marginLeft: '5px'}}
                                  onClick={this.clickLegendArea}>{`${entry}`}</div>
-                        </div>)
+                        </div>);
                     })
                 }</div>
                 {collection !== 'daily' && <div style={{
@@ -787,10 +786,10 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                         color = '#3A4354';
                     }
                     return (
-                        <div key={`item-${index}`} style={{color: color, display: 'inline-block', marginRight: '5px'}}>
+                        <div key={`item-${index}`} style={{color, display: 'inline-block', marginRight: '5px'}}>
                             <div style={{display: 'inline-block', marginLeft: '5px'}}
                                  onClick={this.clickLegendBar}>{`${entry}`}</div>
-                        </div>)
+                        </div>);
                 })
                 }</div>}
             </div>
@@ -810,14 +809,14 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
                         let color = '#dce3e7';
                         const ind = payload.findIndex(value => value.dataKey === entry);
                         if (payload[ind]) {
-                            if (ind !== -1) color = payload[ind].color;
+                            if (ind !== -1) { color = payload[ind].color; }
                         }
                         return (<div key={`item-${index}`}
-                                     style={{color: color, display: 'inline-block', marginRight: '5px'}}>
+                                     style={{color, display: 'inline-block', marginRight: '5px'}}>
                             <Icon size={10} icon={square} style={{backgroundColor: color}}/>
                             <div style={{display: 'inline-block', marginLeft: '5px'}}
                                  onClick={this.clickLegendBar}>{`${entry}`}</div>
-                        </div>)
+                        </div>);
                     })
                 }
             </div>
@@ -825,30 +824,30 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
     }
 
     private getArrayForLineDimensions = () => {
-        if (this.props.collection === 'daily' || this.props.dimensions.length === 1) return this.props.data;
+        if (this.props.collection === 'daily' || this.props.dimensions.length === 1) { return this.props.data; }
         if (this.props.firstLine === 'displayRate' || this.props.firstLine === 'errorRate' || this.props.firstLine === 'ecpm' || this.props.firstLine === 'ctr') {
             this.setState({
                 rateFlagSecond: true
             } as any, () => {
-                return
+                return;
             });
         }
         const {rateFlagFirst, rateFlagSecond} = this.state;
         const {firstLine, secondLine, data} = this.props;
-        if (!rateFlagFirst && !rateFlagSecond) return this.getArrayForDimensions();
+        if (!rateFlagFirst && !rateFlagSecond) { return this.getArrayForDimensions(); }
         const lineGraphic = rateFlagFirst ? secondLine : firstLine;
         const arr = data.map((value, i) => {
             const line = value.country ? value.country.label : value.adType ? value.adType.label : value.platform ? value.platform.label : value.agency ? value.agency.label : value.seller ? value.seller.label : null;
-            let tmp = {
+            const tmp = {
                 name: value.name
             };
             tmp[line] = value[lineGraphic];
             return tmp;
         });
-        let mapArr = arr.reduce((map, value, index, arr) => {
+        const mapArr = arr.reduce((map, value, index, arr) => {
             if (map.has(value.name)) {
                 const mapValue = map.get(value.name);
-                let data = {};
+                const data = {};
                 Object.assign(data, value, mapValue);
                 map.set(value.name, data);
             } else {
@@ -856,11 +855,11 @@ class DailyChartComponent extends React.Component<DailyChartProps & DailyChartSt
             }
             return map;
         }, new Map());
-        let newData = Array.from(mapArr.values())
+        let newData = Array.from(mapArr.values());
         newData = newData.map((value, i) => {
-            var arr = [];
-            for (let key in value) {
-                if (key !== 'name') arr.push({key: key, value: value[key]});
+            const arr = [];
+            for (const key in value) {
+                if (key !== 'name') { arr.push({key, value: value[key]}); }
             }
             return value;
         });

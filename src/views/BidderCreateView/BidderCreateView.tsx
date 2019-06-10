@@ -34,7 +34,7 @@ export class BidderCreateViewComponent extends React.Component<DispatchProps & B
         if (create.bidder) {
             this.props.onCancel();
         }
-    };
+    }
 }
 
 export const BidderCreateView = connect<{}, DispatchProps, BidderCreateViewProps>(

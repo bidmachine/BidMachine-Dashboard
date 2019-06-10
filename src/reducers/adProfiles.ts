@@ -100,7 +100,7 @@ export const requestAdProfilesAction = (type: AdProfileType, bidderId: number) =
             return dispatch({
                 type: REQUEST_AD_PROFILES_FAILURE,
                 error: error.response.data
-            } as any)
+            } as any);
         });
 };
 

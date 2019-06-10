@@ -4,13 +4,9 @@ export const DEFAULT_ACTION = '/default';
 
 export type Actions = Action;
 
-export interface State {
+const initialState = {};
 
-}
-
-const initialState: State = {};
-
-export function reducer(state: State = initialState, action: Actions) {
+export function reducer(state = initialState, action: Actions) {
     switch (action.type) {
         case DEFAULT_ACTION: {
             return state;

@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {ClassAttributes, Component} from 'react';
 import {connect, Dispatch} from 'react-redux';
-import * as Select from 'react-select';
+import Select from 'react-select';
 import {State} from '../../reducers';
 import {SSP} from '../../models/auction/SSP';
 import {Field, renderError, simpleValueArray} from '../../lib/form';
 import {requestSSPAction} from '../../reducers/SSPSelect';
 
 interface SelectSSPProps extends ClassAttributes<SelectSSPComponent> {
-    value?: {
+    value?: Array<{
         value: number,
         label: string
-    }[];
+    }>;
     onChange?: any;
     onFocus?: any;
     onBlur?: any;
@@ -50,11 +50,13 @@ export const SelectSSP = connect<StateProps, DispatchProps, SelectSSPProps>(
     (state: State) => ({
         loading: state.SSPSelect.loading,
         sellers: state.SSPSelect.sellers.sort((a: SSP, b: SSP) => {
-            let [a_name, b_name] = [a.name.toLowerCase(), b.name.toLowerCase()];
-            if (a_name < b_name)
+            const [aName, bName] = [a.name.toLowerCase(), b.name.toLowerCase()];
+            if (aName < bName) {
                 return -1;
-            if (a_name > b_name)
+            }
+            if (aName > bName) {
                 return 1;
+            }
             return 0;
         })
     }),
@@ -63,7 +65,6 @@ export const SelectSSP = connect<StateProps, DispatchProps, SelectSSPProps>(
     })
 )(SelectSSPComponent);
 
-
 export function renderSelectSSPField(field: Field) {
     return <div className='form-field'>
         <label>{field.label}</label>
@@ -71,14 +72,14 @@ export function renderSelectSSPField(field: Field) {
             onBlur={field.input.onBlur}
             value={field.input.value}
             onChange={(value) => {
-                let values = simpleValueArray(value);
+                const values = simpleValueArray(value);
                 if (values.findIndex(val => val === '1') === -1) {
                     values.push('1');
                 }
                 return field.input
                     .onChange(values
                         .map(v => Number(v))
-                    )
+                    );
             }
             }
         />

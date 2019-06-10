@@ -1,16 +1,12 @@
 export function abbreviate(inValue, inMaxPlaces, inForcePlaces, inForceLetter) {
-    let number = Number(inValue);
-    let forceLetter = inForceLetter || false;
+    const value = Number(inValue);
+    const forceLetter = inForceLetter || false;
     if (forceLetter !== false) {
-        return annotate(number, inMaxPlaces, inForcePlaces, forceLetter)
+        return annotate(value, inMaxPlaces, inForcePlaces, forceLetter);
     }
-    let abbr = undefined;
-    if (number >= 1e12) abbr = 'T';
-    else if (number >= 1e9) abbr = 'B';
-    else if (number >= 1e6) abbr = 'M';
-    else if (number >= 1e3) abbr = 'K';
-    else abbr = '';
-    return annotate(number, inMaxPlaces, inForcePlaces, abbr)
+    let abbr;
+    if (value >= 1e12) { abbr = 'T'; } else if (value >= 1e9) { abbr = 'B'; } else if (value >= 1e6) { abbr = 'M'; } else if (value >= 1e3) { abbr = 'K'; } else { abbr = ''; }
+    return annotate(value, inMaxPlaces, inForcePlaces, abbr);
 }
 
 function annotate(inValue, inMaxPlaces, inForcePlaces, inAbbr) {
@@ -30,26 +26,26 @@ function annotate(inValue, inMaxPlaces, inForcePlaces, inAbbr) {
             break;
         case '':
             rounded = inValue;
-            break
+            break;
     }
     if (inMaxPlaces !== false) {
-        let test = new RegExp('\\.\\d{' + (inMaxPlaces + 1) + ',}$');
+        const test = new RegExp('\\.\\d{' + (inMaxPlaces + 1) + ',}$');
         if (test.test(('' + rounded))) {
-            rounded = rounded.toFixed(inMaxPlaces)
+            rounded = rounded.toFixed(inMaxPlaces);
         }
     }
     if (inForcePlaces !== false) {
-        rounded = Number(rounded).toFixed(inForcePlaces)
+        rounded = Number(rounded).toFixed(inForcePlaces);
     }
-    return numberWithCommas(rounded + (inAbbr || ''))
+    return numberWithCommas(rounded + (inAbbr || ''));
 }
 
 export function numberWithCommas(nStr) {
     nStr += '';
-    let x = nStr.split('.');
+    const x = nStr.split('.');
     let x1 = x[0];
-    let x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
+    const x2 = x.length > 1 ? '.' + x[1] : '';
+    const rgx = /(\d+)(\d{3})/;
     while (rgx.test(x1)) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {ClassAttributes, Component} from 'react';
 import {connect, Dispatch} from 'react-redux';
-import * as Select from 'react-select';
+import Select from 'react-select';
 import {State} from '../../reducers';
 import {requestAgenciesAction} from '../../reducers/agenciesSelect';
-import {Agency} from '../../models/auction/Agency';
+import {Agency} from '../../models/auction';
 import {Field, renderError} from '../../lib/form';
 
 interface SelectAgencyProps extends ClassAttributes<SelectAgencyComponent> {
@@ -46,11 +46,9 @@ export const SelectAgency = connect<StateProps, DispatchProps, SelectAgencyProps
     (state: State) => ({
         loading: state.agenciesSelect.loading,
         agencies: state.agenciesSelect.agencies.sort((a: Agency, b: Agency) => {
-            let [a_name, b_name] = [a.title.toLowerCase(), b.title.toLowerCase()];
-            if (a_name < b_name)
-                return -1;
-            if (a_name > b_name)
-                return 1;
+            const [aName, bName] = [a.title.toLowerCase(), b.title.toLowerCase()];
+            if (aName < bName) { return -1; }
+            if (aName > bName) { return 1; }
             return 0;
         })
     }),

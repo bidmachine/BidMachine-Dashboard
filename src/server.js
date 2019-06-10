@@ -1,20 +1,20 @@
-var express = require('express');
-var path = require('path');
-var httpProxy = require('http-proxy');
-var morgan = require('morgan');
+const express = require('express');
+const path = require('path');
+const httpProxy = require('http-proxy');
+const morgan = require('morgan');
 
 console.log('Booting server');
 
-var apiUrl = process.env['API_URL'] || 'http://localhost:3000/api/v1';
+const apiUrl = process.env['API_URL'] || 'http://localhost:3000/api/v1';
 
-var apiProxy = new httpProxy.createProxyServer({
+const apiProxy = new httpProxy.createProxyServer({
     target: apiUrl,
-    changeOrigin: true,
-}).on('error', function (err, req, res) {
-    console.error(err)
+    changeOrigin: true
+}).on('error', function (err) {
+    console.error(err);
 });
 
-var app = express();
+const app = express();
 app.use(morgan('combined'));
 
 app.use('/api', function (req, res) {

@@ -200,18 +200,18 @@ export class AdProfilesTypeViewComponent extends React.Component<StateProps & Di
     }
 
     renderTemplates() {
-        let variants = templatesByType[this.props.type];
+        const variants = templatesByType[this.props.type];
         return (
             <ul className="choose-adprofile-templates">
                 {variants.map(template => (<li key={template.name}>
                     <Button className='primary' onClick={() => this.setState({
-                        template: template,
+                        template,
                         chooseTemplate: false
                     } as any, () => this.openCreateModal())
                     }>{template.name}</Button>
                 </li>))}
             </ul>
-        )
+        );
     }
 
     render() {
@@ -281,12 +281,12 @@ export class AdProfilesTypeViewComponent extends React.Component<StateProps & Di
     private editAdProfile = async (adProfile: AdProfile) => {
         await this.props.updateProfile(adProfile.id, adProfile);
         this.closeEditModal();
-    };
+    }
 
     private createProfile = async (profile: AdProfile) => {
         await this.props.createProfile(profile);
         this.closeCreateModal();
-    };
+    }
 
     private renderEditForm = () => {
         const {profileId} = this.state;
@@ -325,7 +325,7 @@ export class AdProfilesTypeViewComponent extends React.Component<StateProps & Di
         } else {
             return null;
         }
-    };
+    }
 
     private renderForm = () => {
         switch (this.props.type) {
@@ -357,7 +357,7 @@ export class AdProfilesTypeViewComponent extends React.Component<StateProps & Di
                 return null;
             }
         }
-    };
+    }
 }
 
 export const AdProfilesTypeView = connect<StateProps, DispatchProps, AdProfilesTypeViewProps>(

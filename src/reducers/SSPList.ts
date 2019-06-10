@@ -43,7 +43,7 @@ const initialState: State = {
     sortDirection: 0,
     errorMessage: null,
     tab: 'agency'
-}
+};
 
 function removeById(state: State, id: number) {
     const index = state.items.indexOf(id);
@@ -66,7 +66,6 @@ function removeById(state: State, id: number) {
         return state;
     }
 }
-
 
 function updateItem(state: State,
                     id: number,
@@ -151,13 +150,13 @@ export function reducer(state: State = initialState, action: Actions): State {
             return {
                 ...state,
                 tab
-            }
+            };
         }
         case CREATE_SSP_FAILURE: {
             return {
                 ...state,
                 errorMessage: (action as any).errorMessage
-            }
+            };
         }
         default: {
             return state;
@@ -209,14 +208,14 @@ export const updateSSPAction = (id: number, seller: SSP) => (dispatch: Dispatch<
                 active: seller.active,
                 result,
                 id
-            } as any)
+            } as any);
         })
         .catch(error => {
-            dispatch(openInfo(`${error.response.data.message} Try later.`))
+            dispatch(openInfo(`${error.response.data.message} Try later.`));
             return dispatch({
                 type: UPDATE_SSP_FAILURE,
                 error: error.response.data
-            })
+            });
         });
 };
 
@@ -233,11 +232,11 @@ export const toggleSSPAction = (id: number, seller: SSP) => (dispatch: Dispatch<
             id
         } as any))
         .catch(error => {
-            dispatch(openInfo(`${error.response.data.message} Try later.`))
+            dispatch(openInfo(`${error.response.data.message} Try later.`));
             return dispatch({
                 type: UPDATE_SSP_FAILURE,
                 error: error.response.data
-            })
+            });
         });
 };
 
@@ -261,7 +260,7 @@ export const deleteSSPAction = (id: number) => (dispatch: Dispatch<any>) => {
 export const createSSPAction = (seller: SSP) => (dispatch: Dispatch<any>) => {
     dispatch({
         type: CREATE_SSP,
-        seller: seller
+        seller
     } as any);
     seller.active = false;
     return createSSP(seller)
@@ -278,4 +277,4 @@ export const createSSPAction = (seller: SSP) => (dispatch: Dispatch<any>) => {
 export const setTab = (tab: string) => (dispatch: Dispatch<any>) => dispatch({
     type: SET_TAB,
     tab
-})
+});

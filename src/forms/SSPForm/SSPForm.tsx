@@ -12,8 +12,7 @@ export class SSPFormComponent extends React.Component<any, {}> {
         if (location.pathname.indexOf('ssp') > -1) {
             return '/clients';
         }
-        const newPath = location.pathname.split('/').slice(0, -1).join('/');
-        return newPath
+        return location.pathname.split('/').slice(0, -1).join('/');
     }
 
     render() {

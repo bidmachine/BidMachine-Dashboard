@@ -19,13 +19,12 @@ import {Networks} from "../../models/rtb";
  */
 export class BidderFormComponent extends React.Component<any, {}> {
     titleDisabled() {
-        let {initialValues} = this.props;
-        return !!initialValues.id
+        const {initialValues} = this.props;
+        return !!initialValues.id;
     }
 
     getNewLocation = () => {
-        const newPath = location.pathname.split('/').slice(0, -1).join('/');
-        return newPath
+        return location.pathname.split('/').slice(0, -1).join('/');
     }
 
     render() {

@@ -35,11 +35,11 @@ export class BiddersViewComponent extends React.Component<StateProps & DispatchP
 }> {
     state = {
         createModal: false
-    }
+    };
 
     deleteBidder = (id: number) => {
         this.props.confirmDeleteBidder(() => this.props.deleteBidder(id));
-    };
+    }
 
     componentDidMount() {
         this.props.requestBidders();
@@ -82,7 +82,7 @@ export class BiddersViewComponent extends React.Component<StateProps & DispatchP
     private closeCreateModal = () => {
         this.props.requestBidders();
         this.setState({createModal: false} as any);
-    };
+    }
 }
 
 export const BiddersView = connect<StateProps, DispatchProps, BiddersViewProps>(

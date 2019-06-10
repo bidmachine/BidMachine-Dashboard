@@ -49,7 +49,7 @@ export function updateAgency(id: number, agency: Agency): AxiosPromise<Agency> {
 }
 
 export function toggleAgency(id: number, active: boolean): AxiosPromise<any> {
-    return backend.request({url: `/agency/${id}/active`, method: active ? 'POST' : 'DELETE'})
+    return backend.request({url: `/agency/${id}/active`, method: active ? 'POST' : 'DELETE'});
 }
 
 /**
@@ -60,7 +60,6 @@ export function deleteAgency(id: number): AxiosPromise<any> {
     return backend.delete(`/agency/${id}`);
 }
 
-
 //
 // BIDDERS API
 //
@@ -69,7 +68,7 @@ export function deleteAgency(id: number): AxiosPromise<any> {
  * get bidders list
  */
 export function requestBidders(): AxiosPromise<Bidder[]> {
-    return backend.get<Bidder[]>('/bidder')
+    return backend.get<Bidder[]>('/bidder');
 }
 
 /**
@@ -115,7 +114,7 @@ export function deleteBidder(id: number) {
     return backend.delete(`/bidder/${id}`);
 }
 
-// 
+//
 // SSP
 //
 export function requestSSP(): AxiosPromise<SSP[]> {
@@ -155,7 +154,6 @@ export function deleteSSP(id: number): AxiosPromise<any> {
     return backend.delete(`/sellers/${id}`);
 }
 
-
 //
 // AdProfiles
 //
@@ -173,11 +171,11 @@ export function toggleAdProfile(type: AdProfileType, id: number, active: boolean
 }
 
 export function createAdProfile(type: AdProfileType, adProfile: AdProfile) {
-    return backend.post<VideoAdProfile>(`/bidder/${adProfile.bidderId}/adprofile/${type}`, adProfile)
+    return backend.post<VideoAdProfile>(`/bidder/${adProfile.bidderId}/adprofile/${type}`, adProfile);
 }
 
 export function deleteAdProfile(type: AdProfileType, id: number) {
-    return backend.delete(`/adprofile/${type}/${id}`)
+    return backend.delete(`/adprofile/${type}/${id}`);
 }
 
 export async function updateAdProfile(type: AdProfileType, id: number, adProfile: AdProfile) {
@@ -215,8 +213,8 @@ export function toggleAdSpace(type: AdSpaceType, id: number, active: boolean) {
 }
 
 export interface Dimension {
-    value: any
-    label: string
+    value: any;
+    label: string;
 }
 
 export function getDimensions(collection: Collection, startDate?: string, endDate?: string): AxiosPromise<Dimension[]> {
@@ -247,7 +245,7 @@ export function requestPerformance(startDate: string,
             body[collection] = dimensions;
         }
     }
-    return backend.post<Performance>(`/performance`, body)
+    return backend.post<Performance>(`/performance`, body);
 }
 
 export function requestGraphPerformance(startDate: string,

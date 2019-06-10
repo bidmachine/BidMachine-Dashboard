@@ -36,11 +36,11 @@ export class AgencyBiddersViewComponent extends Component<StateProps & DispatchP
 }> {
     state = {
         createModal: false
-    }
+    };
 
     deleteBidder = (id: number) => {
         this.props.confirmDeleteBidder(() => this.props.deleteBidder(id));
-    };
+    }
 
     componentDidMount() {
         this.props.requestBidders();

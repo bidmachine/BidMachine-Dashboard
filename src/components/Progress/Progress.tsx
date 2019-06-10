@@ -5,7 +5,7 @@ import Dots from 'react-activity/lib/Dots';
 
 export class Progress extends Component<any, {}> {
     render() {
-        let {style} = this.props;
+        const {style} = this.props;
         return <div className='progress' style={style}>
             <Dots/>
         </div>;

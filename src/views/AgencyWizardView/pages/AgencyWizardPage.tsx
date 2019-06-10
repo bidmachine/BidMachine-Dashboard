@@ -31,5 +31,5 @@ export class AgencyWizardPage extends Component<{
         if (create.agency) {
             this.props.onNext();
         }
-    };
+    }
 }

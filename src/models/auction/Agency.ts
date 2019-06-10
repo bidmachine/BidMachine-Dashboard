@@ -13,6 +13,6 @@ export interface Agency extends IdNumber {
 
 export function validateAgency(agency: Agency) {
     const errors: any = {};
-    if (!agency.title) errors.title = 'Required';
+    if (!agency.title) { errors.title = 'Required'; }
     return errors;
 }

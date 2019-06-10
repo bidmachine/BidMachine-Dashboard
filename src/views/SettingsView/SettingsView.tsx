@@ -26,12 +26,12 @@ export class SettingsView extends Component<SettingsViewProps, {
                 [field]: value
             } as any
         }));
-    };
+    }
     save = async () => {
         this.setState({loading: true} as any);
         await setSettings(this.state.settings);
         this.setState({loading: false} as any);
-    };
+    }
 
     componentDidMount() {
         getSettings().then(response => this.setState({settings: response.data} as any));

@@ -60,7 +60,7 @@ export class AgencyViewComponent extends Component<AgencyViewProps & AgencyViewS
 
     private updateAgency = (agency: Agency) => {
         this.props.updateAgency(this.props.params.id, agency);
-    };
+    }
 
     private loadAgency(id) {
         this.props.requestAgency(id);

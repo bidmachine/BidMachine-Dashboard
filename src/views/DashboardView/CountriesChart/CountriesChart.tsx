@@ -77,13 +77,13 @@ export class CountriesChart extends Component<{
         this.props.endDate.format('YYYY-MM-DD'),
         this.props.countries,
         'impressions'
-    );
+    )
     setSpent = () => this.requestData(
         this.props.startDate.format('YYYY-MM-DD'),
         this.props.endDate.format('YYYY-MM-DD'),
         this.props.countries,
         'spent'
-    );
+    )
 
     componentDidMount() {
         this.requestData(
@@ -175,5 +175,5 @@ export class CountriesChart extends Component<{
                 this.setState({data: response.data, loading: false} as any);
             })
             .catch(() => this.setState({data: [], loading: false} as any));
-    };
+    }
 }

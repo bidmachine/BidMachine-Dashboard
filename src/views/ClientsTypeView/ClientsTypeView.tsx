@@ -7,6 +7,6 @@ export class ClientsTypeView extends React.Component<{ type: string; }, {}> {
     render() {
         return <div>
             {this.props.type === 'agency' ? <AgenciesView/> : <SSPView/>}
-        </div>
+        </div>;
     }
 }
