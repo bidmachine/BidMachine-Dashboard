@@ -7,7 +7,8 @@ import {browserHistory} from 'react-router';
 
 import {ClientsTypeView} from '../ClientsTypeView/ClientsTypeView';
 
-import {connect, Dispatch} from 'react-redux';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 import {State} from '../../reducers';
 import {setTab} from '../../reducers/SSPList';
 

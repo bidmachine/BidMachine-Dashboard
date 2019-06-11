@@ -1,7 +1,8 @@
 import './Confirm.scss';
 import * as React from 'react';
 import {ClassAttributes, Component} from 'react';
-import {connect, Dispatch} from 'react-redux';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 
 import {State} from '../../reducers';
 import {closeConfirm, ConfirmModel} from '../../reducers/confirm';

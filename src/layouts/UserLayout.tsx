@@ -1,6 +1,7 @@
 import './UserLayout.scss';
 import * as React from 'react';
-import {connect, Dispatch} from 'react-redux';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 import {Confirm} from "../components/Confirm/Confirm";
 import {LOGO} from "../lib/consts";
 import {Header} from "../components/Header";
