@@ -11,8 +11,6 @@
 
 ## Develop
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app), with custom [react-scripts-typescript-scss](https://github.com/ewgenius/react-scripts-typescript-scss)
-
 - use `API_URL` env variable for proxy api requests
 - `yarn start` - to host local server
 - `yarn build` - to bundle production build
