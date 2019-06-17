@@ -1,10 +1,8 @@
-// import './PerformanceView.scss';
 import * as React from 'react';
 import {ClassAttributes} from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import * as moment from 'moment';
-import {Moment} from 'moment';
+import moment, {Moment} from 'moment';
 
 import {State} from '../../../reducers';
 import {clearTimerAction, setTimerAction} from '../../../reducers/refresh';

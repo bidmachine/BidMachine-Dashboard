@@ -1,8 +1,7 @@
 import './CountriesChart.scss';
 import * as React from 'react';
 import {Component} from 'react';
-import * as moment from 'moment';
-import {Moment} from 'moment';
+import moment, {Moment} from 'moment';
 import {requestGraphPerformance} from '../../../lib/api';
 
 import {Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';

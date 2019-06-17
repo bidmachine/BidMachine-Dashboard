@@ -1,5 +1,5 @@
 import {Action, Dispatch} from 'redux';
-import * as moment from 'moment';
+import moment from 'moment';
 
 import {requestPerformance} from '../lib/api';
 import {Granularity} from '../models/statistics/Granularity';

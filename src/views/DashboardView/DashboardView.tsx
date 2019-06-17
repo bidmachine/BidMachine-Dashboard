@@ -1,6 +1,5 @@
 import './DashboardView.scss';
-import * as moment from 'moment';
-import {Moment} from 'moment';
+import moment, {Moment} from 'moment';
 import * as React from 'react';
 import {ClassAttributes} from 'react';
 import {connect} from 'react-redux';
