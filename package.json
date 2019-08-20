@@ -34,7 +34,7 @@
     "@types/webpack-dev-server": "^3.1.6",
     "axios": "0.18.1",
     "core-js": "2.6.8",
-    "css-loader": "0.26.4",
+    "css-loader": "^3.2.0",
     "deepmerge": "2.1.0",
     "dot-prop": "4.1.1",
     "mini-css-extract-plugin": "0.7.0",
