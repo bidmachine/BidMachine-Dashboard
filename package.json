@@ -45,7 +45,7 @@
     "ionicons": "3.0.0",
     "moment": "2.19.4",
     "node": "^12.4.0",
-    "node-sass": "4.12.0",
+    "node-sass": "4.13.1",
     "react": "15.6.2",
     "react-activity": "1.0.16",
     "react-addons-shallow-compare": "15.4.2",
